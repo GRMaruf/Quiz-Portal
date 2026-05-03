@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Quiz Portal{% endblock %}
+
+{% block content %}
+  <section class="py-5 text-center">
+    <h1 class="display-5 fw-bold">Quiz Portal</h1>
+    <p class="lead text-muted mb-4">Participate in available quizzes and see your score and rank.</p>
+
+    <div class="d-flex flex-wrap justify-content-center gap-2">
+      <a class="btn btn-primary" href="{% url 'dashboard' %}">Join as a Participant</a>
+      <a class="btn btn-outline-secondary" href="{% url 'quiz_panel' %}">Create Quizzes</a>
+    </div>
+  </section>
+{% endblock %}

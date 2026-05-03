@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+  <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-4">
+    <div>
+      <h2 class="mb-1">{{ title }}</h2>
+      <p class="text-muted mb-0">{{ quiz.title }}</p>
+    </div>
+    <a class="btn btn-outline-secondary" href="{% url 'panel_quiz_questions' quiz.id %}">Back to Questions</a>
+  </div>
+
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <form method="post">
+        {% csrf_token %}
+        {{ form.non_field_errors }}
+
+        <div class="mb-4">
+          <label class="form-label" for="{{ form.question.id_for_label }}">Question</label>
+          {{ form.question }}
+          {{ form.question.errors }}
+        </div>
+
+        <h5 class="mb-3">Options</h5>
+        {{ formset.management_form }}
+        {{ formset.non_form_errors }}
+
+        <div class="vstack gap-3 mb-4">
+          {% for option_form in formset %}
+            <div class="border rounded p-3">
+              {% for hidden in option_form.hidden_fields %}
+                {{ hidden }}
+              {% endfor %}
+
+              <div class="row g-3 align-items-center">
+                <div class="col-md-8">
+                  <label class="form-label" for="{{ option_form.option.id_for_label }}">Option</label>
+                  {{ option_form.option }}
+                  {{ option_form.option.errors }}
+                </div>
+                <div class="col-md-2">
+                  <div class="form-check mt-md-4">
+                    {{ option_form.is_correct }}
+                    <label class="form-check-label" for="{{ option_form.is_correct.id_for_label }}">Correct</label>
+                  </div>
+                </div>
+                {% if option_form.DELETE %}
+                  <div class="col-md-2">
+                    <div class="form-check mt-md-4">
+                      {{ option_form.DELETE }}
+                      <label class="form-check-label" for="{{ option_form.DELETE.id_for_label }}">Delete</label>
+                    </div>
+                  </div>
+                {% endif %}
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+
+        <button class="btn btn-primary" type="submit">{{ submit_label }}</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}

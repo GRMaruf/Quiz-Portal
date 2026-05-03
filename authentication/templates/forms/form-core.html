@@ -1,0 +1,32 @@
+<div class="p-3">
+
+  <!-- Non-field errors -->
+  {% for error in form.non_field_errors %}
+    <div class="alert alert-danger small py-2">
+      {{ error }}
+    </div>
+  {% endfor %}
+
+  <!-- Fields -->
+  {% for field in form %}
+    <div class="mb-3">
+
+      <!-- Label -->
+      <label class="form-label fw-light">
+        {{ field.label }}
+      </label>
+
+      <!-- Input -->
+      {{ field }}
+
+      <!-- Field errors -->
+      {% for error in field.errors %}
+        <div class="text-danger small mt-1">
+          {{ error }}
+        </div>
+      {% endfor %}
+
+    </div>
+  {% endfor %}
+
+</div>

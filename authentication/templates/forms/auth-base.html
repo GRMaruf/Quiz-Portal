@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+    <title>User {{ action }}</title>
+  </head>
+
+  <body class="d-flex justify-content-center" style="min-height: 100vh; background: linear-gradient(135deg, #e3f2fd, #ffffff);">
+    <div class="card shadow p-4 w-100 m-3" style="max-width: 400px; border-radius: 12px; height: fit-content;">
+      <h4 class="text-center mb-2 text-capitalize">User {{ action }}</h4>
+      <p class="text-center text-muted small mb-3">Fill up the form accordingly</p>
+
+      <form method="post">
+        {% csrf_token %}
+        {% include 'forms/form-core.html' %}
+
+        <div class="d-grid">
+          <button type="submit" class="btn btn-secondary text-capitalize">{{ action }}</button>
+        </div>
+
+        <div class="text-center mt-3">
+          {% if is_login %}
+            <p class="mb-0 small">
+              Don't have an account?
+              <a href="{% url 'register' %}">Register</a>
+            </p>
+          {% else %}
+            <p class="mb-0 small">
+              Already have an account?
+              <a href="{% url 'login' %}">Login</a>
+            </p>
+          {% endif %}
+        </div>
+      </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
