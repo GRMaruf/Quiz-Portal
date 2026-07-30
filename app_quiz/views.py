@@ -103,7 +103,7 @@ def quiz_result(request, quiz_id):
 
 @staff_required
 def quiz_panel(request):
-    quizzes = Quiz.objects.prefetch_related('questions').order_by('title')
+    quizzes = Quiz.objects.filter(user=request.user).prefetch_related('questions').order_by('title')
     return render(request, 'quiz_panel.html', {'quizzes': quizzes})
 
 
@@ -112,7 +112,9 @@ def quiz_create(request):
     if request.method == 'POST':
         form = QuizForm(request.POST)
         if form.is_valid():
-            quiz = form.save()
+            quiz = form.save(commit=False)
+            quiz.user = request.user
+            quiz.save()
             messages.success(request, 'Quiz created. Add questions now.')
             return redirect('panel_quiz_questions', quiz_id=quiz.id)
     else:

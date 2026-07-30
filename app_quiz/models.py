@@ -1,8 +1,9 @@
-from django.contrib.auth.models import User
 from django.db import models
+from authentication.models import CustomUser
 
 
 class Quiz(models.Model):
+    user = models.ForeignKey(CustomUser, on_delete=models.CASCADE, related_name='quiz')
     title = models.CharField(max_length=200)
     description = models.TextField(blank=True)
 
@@ -37,7 +38,7 @@ class Participant(models.Model):
         ('Other', 'Other'),
     ]
 
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='participant')
+    user = models.OneToOneField(CustomUser, on_delete=models.CASCADE, related_name='participant')
     name = models.CharField(max_length=120)
     student_class = models.CharField('Class', max_length=50)
     age = models.PositiveIntegerField()
