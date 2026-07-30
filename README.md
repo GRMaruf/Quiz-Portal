@@ -30,5 +30,6 @@ python manage.py runserver
 
 ## What I'd Build Next
 - Timed quizzes with auto-submit
-- Multiple question types (currently single-choice only — adjust if not accurate)
+- Multiple question types (currently single-choice only)
 - Export results as CSV/PDF
+- Update user experience
