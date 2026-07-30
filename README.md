@@ -26,14 +26,13 @@ A role-based quiz platform where quiz makers create and manage quizzes, and part
 Python · Django · SQLite/PostgreSQL · HTML/CSS/Bootstrap
 
 ## Run Locally
-
-​```powershell
+```bash
 git clone https://github.com/GRMaruf/Quiz-Portal.git
 cd Quiz-Portal
 pip install -r requirements.txt
 python manage.py migrate
 python manage.py runserver
-​```
+```
 
 ## What I'd Build Next
 - Timed quizzes with auto-submit
