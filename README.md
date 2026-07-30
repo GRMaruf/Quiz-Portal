@@ -4,10 +4,16 @@ A role-based quiz platform where quiz makers create and manage quizzes, and part
 
 🔗 **Live demo:** https://quiz.pybrothers.top/
 
-- Quiz Maker - `username: ____` and `password: demo123`
-- Participant - `username: ____` and `password: demo123`
+- Quiz Maker - `username: sara` and `password: demo123`
+- Participant - `username: lucy` and `password: demo123`
 
-[Screenshots here]
+<img width="1357" height="679" alt="create quiz" src="https://github.com/user-attachments/assets/c6c08d15-a4c8-4371-a61d-a31e05593d58" />
+
+<img width="1359" height="683" alt="create questions" src="https://github.com/user-attachments/assets/c1a082bc-0687-4542-9306-0d02c4b499dc" />
+
+<img width="1359" height="702" alt="all quizes" src="https://github.com/user-attachments/assets/f5271f7e-5626-47b9-b573-3ed6b3f6a71d" />
+
+<img width="1347" height="633" alt="leaderboard" src="https://github.com/user-attachments/assets/780332c6-75ac-47c9-87d0-03395cb8c39e" />
 
 ## Features
 - Role-based authentication (Quiz Maker vs Participant)
